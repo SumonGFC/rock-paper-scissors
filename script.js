@@ -47,3 +47,17 @@ function getUserChoice() {
   };
   return choice;
 }
+
+function generateEvilChoice(playerChoice) {
+  if (playerChoice === 'rock') return 'paper';
+  else if (playerChoice === 'paper') return 'scissors';
+  else if (playerChoice === 'scissors') return 'rock';
+  else return 'ERROR: playerChoice is neither rock nor paper nor scissors';
+}
+
+function generateComputerChoice() {
+  let x = Math.floor((Math.random()*3));
+  if (x === 0) return 'rock';
+  else if (x === 1) return 'paper';
+  else return 'scissors';
+}
