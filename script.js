@@ -14,10 +14,7 @@ PSEUDOCODE:
 - promptRounds()
 - getUserChoice()
 - generateComputerChoice()
-- determineRoundWinner()
-- determineGameWinner()
 */
-
 
 function promptStart() {
   //Prompt user; Return string 'yes' or 'no'
@@ -39,4 +36,14 @@ function promptRounds() {
       alert("Please enter a positive number between 1 and 100.");
   };
   return rounds;
+}
+
+function getUserChoice() {
+  let choice;
+  while (choice !== 'rock' && choice !== 'paper' && choice !== 'scissors'){
+    choice = prompt("Choose wisely!").toLowerCase();
+    if (choice  !== 'rock' && choice !== 'paper' && choice !== 'scissors')
+      alert("You fool! That's not a valid choice!");
+  };
+  return choice;
 }
