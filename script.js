@@ -10,6 +10,7 @@
 PSEUDOCODE:
 
 //functions:
+- promptStart()
 - initializeGame()
 - getUserChoice()
 - generateComputerChoice()
@@ -28,4 +29,22 @@ for i=1,...,rounds:
   determineRoundWinner(x, y);
 
 determineGameWinner();
+*/
+
+
+function promptStart() {
+  //Prompt user; Return string 'yes' or 'no'
+  let playGame;
+  while (playGame !== 'yes' && playGame !== 'no') {
+    playGame = prompt("Would you like to play Rock-Paper-Scissors with me?").toLowerCase();
+    if (playGame !== 'yes' && playGame !== 'no') {
+      alert("I'm sorry, I didn't understand that. Please type either Yes or No.");
+    };
+  };
+  return playGame;
+}
+
+/*
+if promptStart() == yes: initializeGame()
+else print("It's okay; not everyone is brave enough to face me!");
 */
