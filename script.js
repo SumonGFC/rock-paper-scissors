@@ -11,24 +11,11 @@ PSEUDOCODE:
 
 //functions:
 - promptStart()
-- initializeGame()
+- promptRounds()
 - getUserChoice()
 - generateComputerChoice()
 - determineRoundWinner()
 - determineGameWinner()
-
-while gameState == 0:
-prompt("Would you like to play?")
-  if yes: rounds = prompt("how many rounds?"); gameState = 1;
-  if no: print("It's okay; not everyone is brave enough to face me!");
-
-for i=1,...,rounds:
-  
-  x = getUserChoice();
-  y = generateComputerChoice(x);
-  determineRoundWinner(x, y);
-
-determineGameWinner();
 */
 
 
@@ -37,14 +24,19 @@ function promptStart() {
   let playGame;
   while (playGame !== 'yes' && playGame !== 'no') {
     playGame = prompt("Would you like to play Rock-Paper-Scissors with me?").toLowerCase();
-    if (playGame !== 'yes' && playGame !== 'no') {
+    if (playGame !== 'yes' && playGame !== 'no') 
       alert("I'm sorry, I didn't understand that. Please type either Yes or No.");
-    };
   };
   return playGame;
 }
 
-/*
-if promptStart() == yes: initializeGame()
-else print("It's okay; not everyone is brave enough to face me!");
-*/
+function promptRounds() {
+  //Prompt user for number of rounds; return positive int
+  let rounds = 0; 
+  while (rounds < 1 || rounds > 100 || isNaN(rounds)) {
+    rounds = parseInt(prompt("How many rounds would you like to play?"));
+    if (rounds < 1 || rounds > 100 || isNaN(rounds))
+      alert("Please enter a positive number between 1 and 100.");
+  };
+  return rounds;
+}
