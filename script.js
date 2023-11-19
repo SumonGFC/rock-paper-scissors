@@ -6,15 +6,19 @@
 3. Determine round winner; keep track of score
 4. Repeat for specified number of rounds
 5. Determine game winner;
-
-PSEUDOCODE:
-
-//functions:
-- promptStart()
-- promptRounds()
-- getUserChoice()
-- generateComputerChoice()
 */
+
+// while (true) {
+//   let numRounds;
+//   if (promptStart() === 'yes') {
+//     numRounds = promptRounds();
+//   } else {
+//     alert("Very well. Not everyone is brave enough to face me. Come back when you are stronger.")
+//     continue;
+//   };
+//   alert("Are you ready? Prepare yourself!");
+//   generateEvilChoice(getUserChoice());
+// }
 
 function promptStart() {
   //Prompt user; Return string 'yes' or 'no'
