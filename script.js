@@ -8,8 +8,7 @@
 5. Determine game winner;
 */
 
-const USER_WIN = true;
-const USER_LOSE = false;
+const USER_WIN = true, USER_LOSE = false, TIE = null;
 const ROCK = 'rock', PAPER = 'paper', SCISSORS = 'scissors';
 
 while (true) {
@@ -29,12 +28,18 @@ while (true) {
     let computerChoice = generateEvilChoice(userChoice);
     // let computerChoice = generateComputerChoice();
     let roundResult = playRound(userChoice, computerChoice);
-    if (roundResult === WIN) {userScore++}
-    else computerScore++;
+    if (roundResult === USER_WIN) {
+      userScore++;
+      alert("Darn! You beat me!");
+    } else if (roundResult === USER_LOSE) {
+      computerScore++;
+      alert("You lose!");
+    } else if (roundResult === TIE) {
+      alert("Great minds think alike.")
+    } else alert("ERROR -- USER/COMPUTER INPUT IS NOT VALID");
   };
-
   decideWinner(userScore, computerScore);
-}
+};
 
 function promptStart() {
   //Prompt user; Return string 'yes' or 'no'
@@ -69,23 +74,52 @@ function getUserChoice() {
 }
 
 function generateEvilChoice(playerChoice) {
-  if (playerChoice === ROCK) return PAPER;
-  else if (playerChoice === PAPER) return SCISSORS;
-  else if (playerChoice === SCISSORS) return ROCK;
-  else return 'ERROR: playerChoice is neither rock nor paper nor scissors';
+  if (playerChoice === ROCK) {
+    console.log(`computer choice is ${PAPER}`)
+    return PAPER;
+  } else if (playerChoice === PAPER) {
+    console.log(`computer choice is ${SCISSORS}`)
+    return SCISSORS;
+  } else if (playerChoice === SCISSORS) {
+    console.log(`computer choice is ${ROCK}`)
+    return ROCK;
+  } else alert("ERROR: playerChoice is neither rock nor paper nor scissors");
 }
 
+/*
 function generateComputerChoice() {
   let x = Math.floor((Math.random()*3));
   if (x === 0) return ROCK;
   else if (x === 1) return PAPER;
   else return SCISSORS;
 }
+*/
 
-function playRound(x, y) {
+function playRound(playerSelection, computerSelection) {
   //input Users play and Computers play; return boolean (true for play false for machine)
+  if (playerSelection === ROCK) {
+    if (computerSelection === ROCK) {return TIE;}
+    else if (computerSelection === PAPER) {return USER_LOSE;}
+    else if (computerSelection === SCISSORS) {return USER_WIN}
+    else return ""
+  }
+  else if (playerSelection === PAPER) {
+    if (computerSelection === ROCK) {return USER_WIN;}
+    else if (computerSelection === PAPER) {return TIE;}
+    else if (computerSelection === SCISSORS) {return USER_LOSE;}
+  }
+  else if (playerSelection === SCISSORS) {
+    if (computerSelection === ROCK) {return USER_LOSE;}
+    else if (computerSelection === PAPER) {return USER_WIN;}
+    else if (computerSelection === SCISSORS) {return TIE;}
+  } 
+  else alert("ERROR IN playRound() FUNCTION -- see code to fix immeditely!")
 }
 
-function decideWinner(score1, score2) {
+function generateRoundResultMessage(playerSelection, computerSelection, roundOutcome) {
+  //code
+}
+
+function decideWinner(userScore, computerScore) {
 
 }
