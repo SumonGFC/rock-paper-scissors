@@ -1,46 +1,50 @@
-/* OUTLINE:
-1. Prompt: Would you like to play? If so, how many rounds?
-  1.a) If yes, go to 2.
-  1.b) If no, print sad face and prompt again
-2. Ask & Record user input; Generate computer choice
-3. Determine round winner; keep track of score
-4. Repeat for specified number of rounds
-5. Determine game winner;
-*/
+//ROCK-PAPER-SCISSORS
 
 const USER_WIN = true, USER_LOSE = false, TIE = null;
 const ROCK = 'rock', PAPER = 'paper', SCISSORS = 'scissors';
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~GAME LOGIC
 while (true) {
   let numRounds;
   let userScore = 0, computerScore = 0;
+
+  //SET-UP THE GAME
   if (promptStart() === 'yes') {
     numRounds = promptRounds();
   } else {
     alert("Very well. Not everyone is brave enough to face me. Come back when you are stronger.")
     continue;
   };
-
   alert("Are you ready? Prepare yourself!");
   
+  //PLAY THE GAME
   for (let i = 0; i < numRounds; i++) {
     let userChoice = getUserChoice();
     let computerChoice = generateEvilChoice(userChoice);
     // let computerChoice = generateComputerChoice();
     let roundResult = playRound(userChoice, computerChoice);
+
+    //KEEP SCORE
     if (roundResult === USER_WIN) {
       userScore++;
       alert("Darn! You beat me!");
-    } else if (roundResult === USER_LOSE) {
+    } 
+    else if (roundResult === USER_LOSE) {
       computerScore++;
       alert("You lose!");
-    } else if (roundResult === TIE) {
+    }
+    else if (roundResult === TIE) {
       alert("Great minds think alike.")
-    } else alert("ERROR -- USER/COMPUTER INPUT IS NOT VALID");
+    }
+    else alert("ERROR -- USER/COMPUTER INPUT IS NOT VALID");
   };
+
+  //DECIDE WINNER
   decideWinner(userScore, computerScore);
 };
 
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~FUNCTIONS USED IN CODE
 function promptStart() {
   //Prompt user; Return string 'yes' or 'no'
   let playGame;
@@ -75,13 +79,13 @@ function getUserChoice() {
 
 function generateEvilChoice(playerChoice) {
   if (playerChoice === ROCK) {
-    console.log(`computer choice is ${PAPER}`)
+    console.log(`computer choice is ${PAPER}`);
     return PAPER;
   } else if (playerChoice === PAPER) {
-    console.log(`computer choice is ${SCISSORS}`)
+    console.log(`computer choice is ${SCISSORS}`);
     return SCISSORS;
   } else if (playerChoice === SCISSORS) {
-    console.log(`computer choice is ${ROCK}`)
+    console.log(`computer choice is ${ROCK}`);
     return ROCK;
   } else alert("ERROR: playerChoice is neither rock nor paper nor scissors");
 }
@@ -101,7 +105,6 @@ function playRound(playerSelection, computerSelection) {
     if (computerSelection === ROCK) {return TIE;}
     else if (computerSelection === PAPER) {return USER_LOSE;}
     else if (computerSelection === SCISSORS) {return USER_WIN}
-    else return ""
   }
   else if (playerSelection === PAPER) {
     if (computerSelection === ROCK) {return USER_WIN;}
