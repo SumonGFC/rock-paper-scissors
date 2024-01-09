@@ -51,7 +51,7 @@ function promptStart() {
   while (playGame !== 'yes' && playGame !== 'no') {
     playGame = prompt("Would you like to play Rock-Paper-Scissors with me?").toLowerCase();
     if (playGame !== 'yes' && playGame !== 'no') 
-      alert("I'm sorry, I didn't understand that. Please type either Yes or No.");
+      alert("I'm sorry, I didn't understand that. Please type either yes or no.");
   };
   return playGame;
 }
@@ -103,16 +103,23 @@ function playRound(playerSelection, computerSelection) {
   //input Users play and Computers play; return boolean (true for play false for machine)
   if (playerSelection === ROCK) {
     if (computerSelection === ROCK) {return TIE;}
-    else if (computerSelection === PAPER) {return USER_LOSE;}
-    else if (computerSelection === SCISSORS) {return USER_WIN}
+    else if (computerSelection === PAPER) {
+      alert("HA! I chose Paper!");
+      return USER_LOSE;
+    }
+    else if (computerSelection === SCISSORS) {return USER_WIN;}
   }
   else if (playerSelection === PAPER) {
     if (computerSelection === ROCK) {return USER_WIN;}
     else if (computerSelection === PAPER) {return TIE;}
-    else if (computerSelection === SCISSORS) {return USER_LOSE;}
+    else if (computerSelection === SCISSORS) {
+      alert("HA! I chose Scissors!");
+      return USER_LOSE;}
   }
   else if (playerSelection === SCISSORS) {
-    if (computerSelection === ROCK) {return USER_LOSE;}
+    if (computerSelection === ROCK) {
+      alert("HA! I chose Rock!");
+      return USER_LOSE;}
     else if (computerSelection === PAPER) {return USER_WIN;}
     else if (computerSelection === SCISSORS) {return TIE;}
   } 
