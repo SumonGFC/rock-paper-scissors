@@ -14,11 +14,14 @@ function playRound(playerSelection, computerSelection) {
 
     const WIN = `Congrats! You win! ${playerSelection} beats ${computerSelection}!`;
     const LOSE = `You lose! ${computerSelection} beats ${playerSelection}!`;
-    const TIE = `Tie! You both picked ${playerSelection}!`;
+    const TIE = `Tie! You both picked ${playerSelection}! Let's play again.`;
 
-    if (playerSelection === computerSelection) return TIE;
+    if (playerSelection === computerSelection) {
+        console.log(TIE);
+        return playRound(prompt("Make your choice:"), getComputerChoice());
+    }
 
-    if (playerSelection === ROCK){
+    if (playerSelection === ROCK) {
         if (computerSelection === PAPER) return LOSE;
         return WIN; //rock beats scissors
     }
