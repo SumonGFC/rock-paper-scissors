@@ -57,6 +57,9 @@ function game() {
     let computerScore = 0;
 
     for (let i = 0; i < ROUNDS; ++i) {
-        if (playRound(prompt("Make your choice:"), getComputerChoice()))
+        console.log(`Round: ${i + 1}`)
+        if (playRound(prompt("Make your choice:"), getComputerChoice())) {
+            ++userScore;
+        } else {++computerScore}
     }
 }
