@@ -62,4 +62,7 @@ function game() {
             ++userScore;
         } else {++computerScore}
     }
+    if (userScore > computerScore) {console.log(`You win!`);}
+    else if (userScore < computerScore) {console.log("I win! You suck!")}
+    else {console.log("It seems we are equals.")}
 }
