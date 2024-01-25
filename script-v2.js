@@ -51,18 +51,18 @@ function playRound(playerSelection, computerSelection) {
         getComputerChoice());   
 }
 
-// function game() {
-//     const ROUNDS = 5;
-//     let userScore = 0;
-//     let computerScore = 0;
+//DOM-manipulation:
 
-//     for (let i = 0; i < ROUNDS; ++i) {
-//         console.log(`Round: ${i + 1}`)
-//         if (playRound(prompt("Make your choice:"), getComputerChoice())) {
-//             ++userScore;
-//         } else {++computerScore}
-//     }
-//     if (userScore > computerScore) {console.log(`You win!`);}
-//     else if (userScore < computerScore) {console.log("I win! You suck!")}
-//     else {console.log("It seems we are equals.")}
-// }
+const btnRock = document.querySelector("#rock");
+const btnPaper = document.querySelector("#paper");
+const btnScissors = document.querySelector("#scissors");
+
+btnRock.addEventListener("click", () => {
+    playRound(ROCK, getComputerChoice())
+});
+btnPaper.addEventListener("click", () => {
+    playRound(PAPER, getComputerChoice())
+});
+btnScissors.addEventListener("click", () => {
+    playRound(SCISSORS, getComputerChoice())
+});
