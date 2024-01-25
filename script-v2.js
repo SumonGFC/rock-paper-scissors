@@ -1,22 +1,7 @@
 const ROCK = 'rock'; 
 const PAPER = 'paper';
 const  SCISSORS = 'scissors';
-
-//DOM-manipulation:
-const btnRock = document.querySelector("#rock");
-const btnPaper = document.querySelector("#paper");
-const btnScissors = document.querySelector("#scissors");
-const divResults = document.querySelector("#results")
-
-btnRock.addEventListener("click", () => {
-    playRound(ROCK, getComputerChoice())
-});
-btnPaper.addEventListener("click", () => {
-    playRound(PAPER, getComputerChoice())
-});
-btnScissors.addEventListener("click", () => {
-    playRound(SCISSORS, getComputerChoice())
-});
+const roundResult = document.querySelector("#round-result")
 
 //functions
 function getComputerChoice() {
@@ -35,31 +20,55 @@ function playRound(playerSelection, computerSelection) {
     const TIE_MSG = `Tie! We both picked ${playerSelection}! Let's play again.`;
 
     if (playerSelection === computerSelection) {
-        divResults.textContent = TIE_MSG;
+        roundResult.textContent = TIE_MSG;
         return TIE;
     }
     if (playerSelection === ROCK) {
         if (computerSelection === PAPER) {
-            divResults.textContent = LOSE_MSG;
+            roundResult.textContent = LOSE_MSG;
             return LOSE;
         }
-        divResults.textContent = WIN_MSG
+        roundResult.textContent = WIN_MSG
         return WIN; //rock beats scissors
     }
     if (playerSelection === PAPER) {
         if (computerSelection === SCISSORS) {
-            divResults.textContent = LOSE_MSG;
+            roundResult.textContent = LOSE_MSG;
             return LOSE;
         }
-        divResults.textContent = WIN_MSG
+        roundResult.textContent = WIN_MSG
         return WIN; //Paper beats rock
     }
     if (playerSelection === SCISSORS) {
         if (computerSelection === ROCK) {
-            divResults.textContent = LOSE_MSG;
+            roundResult.textContent = LOSE_MSG;
             return LOSE;
         }
-        divResults.textContent = WIN_MSG
+        roundResult.textContent = WIN_MSG
         return WIN; //scissors beats paper
     }
 }
+
+const btnRock = document.querySelector("#rock");
+const btnPaper = document.querySelector("#paper");
+const btnScissors = document.querySelector("#scissors");
+
+btnRock.addEventListener("click", () => {
+    playRound(ROCK, getComputerChoice())
+});
+btnPaper.addEventListener("click", () => {
+    playRound(PAPER, getComputerChoice())
+});
+btnScissors.addEventListener("click", () => {
+    playRound(SCISSORS, getComputerChoice())
+});
+
+
+//potential entry point for executing game logic
+const body = document.querySelector("body");
+
+body.addEventListener("click", (e) => {
+    const target = e.target;
+
+
+});
