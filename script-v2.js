@@ -2,6 +2,23 @@ const ROCK = 'rock';
 const PAPER = 'paper';
 const  SCISSORS = 'scissors';
 
+//DOM-manipulation:
+const btnRock = document.querySelector("#rock");
+const btnPaper = document.querySelector("#paper");
+const btnScissors = document.querySelector("#scissors");
+const divResults = document.querySelector("#results")
+
+btnRock.addEventListener("click", () => {
+    playRound(ROCK, getComputerChoice())
+});
+btnPaper.addEventListener("click", () => {
+    playRound(PAPER, getComputerChoice())
+});
+btnScissors.addEventListener("click", () => {
+    playRound(SCISSORS, getComputerChoice())
+});
+
+//functions
 function getComputerChoice() {
     const x = Math.floor(Math.random()*3)
     if (x === 0) return ROCK;
@@ -50,19 +67,3 @@ function playRound(playerSelection, computerSelection) {
         prompt("You seem to have made an invalid choice. Please choose again:"),
         getComputerChoice());   
 }
-
-//DOM-manipulation:
-
-const btnRock = document.querySelector("#rock");
-const btnPaper = document.querySelector("#paper");
-const btnScissors = document.querySelector("#scissors");
-
-btnRock.addEventListener("click", () => {
-    playRound(ROCK, getComputerChoice())
-});
-btnPaper.addEventListener("click", () => {
-    playRound(PAPER, getComputerChoice())
-});
-btnScissors.addEventListener("click", () => {
-    playRound(SCISSORS, getComputerChoice())
-});
