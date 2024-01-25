@@ -51,18 +51,18 @@ function playRound(playerSelection, computerSelection) {
         getComputerChoice());   
 }
 
-function game() {
-    const ROUNDS = 5;
-    let userScore = 0;
-    let computerScore = 0;
+// function game() {
+//     const ROUNDS = 5;
+//     let userScore = 0;
+//     let computerScore = 0;
 
-    for (let i = 0; i < ROUNDS; ++i) {
-        console.log(`Round: ${i + 1}`)
-        if (playRound(prompt("Make your choice:"), getComputerChoice())) {
-            ++userScore;
-        } else {++computerScore}
-    }
-    if (userScore > computerScore) {console.log(`You win!`);}
-    else if (userScore < computerScore) {console.log("I win! You suck!")}
-    else {console.log("It seems we are equals.")}
-}
+//     for (let i = 0; i < ROUNDS; ++i) {
+//         console.log(`Round: ${i + 1}`)
+//         if (playRound(prompt("Make your choice:"), getComputerChoice())) {
+//             ++userScore;
+//         } else {++computerScore}
+//     }
+//     if (userScore > computerScore) {console.log(`You win!`);}
+//     else if (userScore < computerScore) {console.log("I win! You suck!")}
+//     else {console.log("It seems we are equals.")}
+// }
